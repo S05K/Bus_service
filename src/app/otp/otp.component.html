@@ -1,0 +1,16 @@
+<p>otp works!</p>
+<form [formGroup]="data" (ngSubmit)="verifyOTP()">
+    <label>Email</label>
+    <input type="email" name="email" id="email" formControlName="email">
+    <label>Enter OTP</label>
+    <input type="text" maxlength="1" formControlName="otp1">
+    <input type="text" maxlength="1"  formControlName="otp2">
+    <input type="text" maxlength="1"  formControlName="otp3">
+    <input type="text" maxlength="1" formControlName="otp4">
+    <input type="text" maxlength="1" formControlName="otp5">
+    <input type="text" maxlength="1" formControlName="otp6">
+     <label>new Password</label>
+    <input type="password" name="password" id="password" formControlName="password">
+    <button type="submit">Verify OTP</button>
+  </form>
+  

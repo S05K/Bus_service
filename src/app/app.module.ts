@@ -8,13 +8,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
+import { ForgotComponent } from './forgot/forgot.component';
+import { OtpComponent } from './otp/otp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotComponent,
+    OtpComponent
   ],
   imports: [
     BrowserModule,

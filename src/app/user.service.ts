@@ -26,7 +26,6 @@ export class UserService {
     const token = val.token;
     localStorage.setItem('token', token);
     console.log(token);
-    
     this.router.navigate(['/home']);
     return true;
     })
@@ -42,9 +41,26 @@ export class UserService {
     }
   }
 
+  send_otp(data:any)
+  {
+    this.http.post('http://localhost:3000/forgot_passwords',data).subscribe((val)=>{
+      console.log(val);
+     })
+  }
+
+  veify_email( email:any,otp:any,password:any)
+  {
+    const requestBody = { email,otp,password };
+    this.http.put('http://localhost:3000/forgot_passwords/verify_otp',requestBody).subscribe((val)=>{
+      console.log(val);
+      
+    })
+  }
+
   clearData() {
     localStorage.clear();
   }
+
 
    isUserRegistered():boolean{
     return this.isUser;
