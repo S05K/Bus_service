@@ -1,0 +1,43 @@
+.bus-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .bus-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .bus-info {
+    display: flex;
+    margin-bottom: 5px;
+  }
+  
+  .bus-info label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .bus-info span {
+    flex: 1;
+  }
+  
+  /* CSS for Search Form */
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .search-bar input,
+  .search-bar button {
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .search-bar label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  

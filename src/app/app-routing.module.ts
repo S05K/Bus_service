@@ -6,8 +6,10 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { OtpComponent } from './otp/otp.component';
+import { BusComponent } from './bus/bus.component';
 
 const routes: Routes = [
+  {path: 'bus/:id', component: BusComponent},
   {path: 'forgot', component: ForgotComponent},
   {path: 'login', component:LoginComponent},
   {path: 'home', component:HomeComponent, canActivate: [AuthGuard]},

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -56,6 +57,49 @@ export class UserService {
       
     })
   }
+
+
+  get_buses(from: string, to: string, date: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const headers = new HttpHeaders().set('token', `Bearer ${token}`);
+      const params = { from, to, arrival: date }; // Create an object with parameters
+      return this.http.get('http://localhost:3000/buses/get_buses', { params, headers });
+    } else {
+      return new Observable<any>();
+    }
+  }
+  
+  get_seats(id:any)
+  {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const headers = new HttpHeaders().set('token', `Bearer ${token}`);
+    return this.http.get(`http://localhost:3000/buses/${id}`, {headers});
+  } else {
+    return new Observable<any>();
+  }
+  }
+
+  
+  total_amount(busId: any,selectedSeats: any[]) {
+    const token = localStorage.getItem('token');
+    const requestBody: { seats_ids: any[] } = { seats_ids: selectedSeats };
+    if (token) {
+      const headers = new HttpHeaders().set('token', `Bearer ${token}`);
+      return this.http.post(`http://localhost:3000/buses/${busId}/calculate_total_price`, requestBody, { headers });
+    } else {
+      return new Observable<any>();
+    }
+  }
+
+  payment(busId: number, selectedSeats: string[]): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('token', `Bearer ${token}`);
+    const body = { id: busId, seats_ids: selectedSeats };
+    return this.http.post('http://localhost:3000/payments', body, { headers });
+  }
+  
 
   clearData() {
     localStorage.clear();

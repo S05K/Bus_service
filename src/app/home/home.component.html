@@ -1,2 +1,58 @@
 <p>home works!</p>
+
+<form class="search-bar" [formGroup]="data" (ngSubmit)="search()">
+  <label for="">Form:</label>
+  <input type="text" placeholder="From" id="from" name="from" formControlName="from">
+  <label for="">To:</label>
+  <input type="text" placeholder="To" id="to" name="to" formControlName="to">
+  <!-- <input type="date" placeholder="Date" id="date" name="date" formControlName="date"> -->
+  <input type="date" placeholder="Date" id="date" name="date" formControlName="date" appMinDate>
+
+
+  <button  type="submit">Search</button>
+</form>
+<div *ngIf="buses && buses.length>0; else nobuses">
+  <h2>Available Buses</h2>
+  <ul class="bus-list">
+    <li *ngFor="let bus of buses" class="bus-item">
+      <div class="bus-info">
+        <label>Bus Number:</label>
+        <span>{{ bus.number }}</span>
+      </div>
+      <div class="bus-info">
+        <label>Arrival:</label>
+        <span>{{ bus.arrival | date: 'medium' : 'UTC' }}</span>
+      </div>
+      <div class="bus-info">
+        <label>Departure:</label>
+        <span>{{ bus.departure | date: 'medium' : 'UTC' }}</span>
+      </div>
+      <div class="bus-info">
+        <label>Reaching Time:</label>
+        <span>{{ bus.reaching_time | date: 'medium' : 'UTC' }}</span>
+      </div>
+      <div class="bus-info">
+        <label>From:</label>
+        <span>{{ bus.from }}</span>
+      </div>
+      <div class="bus-info">
+        <label>To:</label>
+        <span>{{ bus.to }}</span>
+      </div>
+      <div class="bus-info">
+        <label>Price:</label>
+        <span>{{ bus.price }}</span>
+      </div>
+      <button (click)="book()">Book Seats</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #nobuses>
+  <p>No buses available.</p>
+</ng-template>
+
 <button (click)="Logout()">Logout</button>
+
+
+<!-- <app-bus></app-bus> -->

@@ -1,0 +1,39 @@
+/* Styles for the seat structure */
+.seat-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Adjust as needed */
+    gap: 10px; /* Adjust as needed */
+  }
+  
+  .seat {
+    position: relative;
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    background-color: #e0e0e0; /* Adjust as needed */
+    border: 1px solid #ccc;
+  }
+  
+  .seat-label {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px; /* Adjust as needed */
+    color: #333; /* Adjust as needed */
+  }
+  .book-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 40%;
+    margin-top: 3%;
+  }
+  
+  .book-button:hover {
+    background-color: #45a049;
+  }
+  
