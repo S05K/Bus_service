@@ -4,14 +4,16 @@
       <div *ngIf="seats && seats.length > 0">
         <h2>Please Select Your Seats</h2>
         <div class="seat-container">
-          <div *ngFor="let seat of seats" class="seat" (click)="selectSeat(seat)">
-            <input type="checkbox" id="{{ seat }}" [value]="seat" />
+          <div *ngFor="let seat of seats" class="seat" >
+            <!-- <input type="checkbox" id="{{ seat }}" [value]="seat" [disabled]="isSeatDisabled(seat)" /> -->
+            <input type="checkbox" id="{{ seat }}" [value]="seat" [value]="isSeatDisabled(seat)" (click)="selectSeat(seat)">
+
             <label for="{{ seat }}" class="seat-label">{{ seat }}</label>
           </div>
         </div>
         <button class="book-button" (click)="calculateTotalAmount()">Book</button>   
       </div>
-      <button class="payment-button" (click)="processPayment()" [disabled]="selectedSeats.length === 0">Make Payment</button>
+      <button class="payment-button" (click)="processPayment()" [disabled]="selectedSeats.length === 0" >Make Payment</button>
 
 
 

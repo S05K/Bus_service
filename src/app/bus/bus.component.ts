@@ -8,6 +8,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./bus.component.css']
 })
 export class BusComponent implements OnInit {
+
+  disablePaidSeats() {
+    this.seats.forEach(seat => {
+      if (this.selectedSeats.includes(seat)) { // Check if seat is in selectedSeats
+        seat.disabled = true;
+      }
+    });
+  }
+  
    processPayment()
       {
         console.log("hello");
@@ -15,12 +24,21 @@ export class BusComponent implements OnInit {
           console.log(val);
           this.link=val;
           window.open(this.link.url, '_blank');
+          this.disablePaidSeats();
           })
       }
+
+      isSeatDisabled(seat: any): boolean {
+        return this.selectedSeats.includes(seat);
+      }
+      
+      
   link:any;
   busId: any;
   bus: any;
   seats: any[]=[];
+  selectedSeats: any[] = []; 
+  totalAmount: any; 
     constructor(private route: ActivatedRoute, private service: UserService) { }
   
     ngOnInit(): void {
@@ -35,9 +53,7 @@ export class BusComponent implements OnInit {
         });
       });
     }
-
-    selectedSeats: any[] = []; 
-    totalAmount: any; 
+   
 
 // Method to handle seat selection
 selectSeat(seatId: any){
